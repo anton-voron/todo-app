@@ -1,5 +1,6 @@
 .clock-numb {
-	font-family: "Montserrat"; 
+	font-family: "Montserrat";
+	font-weight: bold; 
 	background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
     background-size: cover;
     color: transparent;
@@ -9,4 +10,16 @@
     font-size: 120px;
     line-height: .75;
     margin: 10px 0;
+}
+
+.add-text {
+    font-family: "Montserrat";
+    line-height: 30px;
+    font-size: 24px;
+    display: block;
+    width: 100%;
+    padding-left: 30px;
+    margin-right: 5% 10%;
+    box-sizing: border-box;
+
 }

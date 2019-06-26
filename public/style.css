@@ -34,3 +34,10 @@ input[type="radio"].visually-hidden {
 	overflow: hidden;
 }
 
+.wrapper-central {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+

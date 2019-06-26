@@ -71,18 +71,20 @@ class App extends Component {
 	render() {
 		const { todoData } = this.state;
 		return (
-			<section className = "todo-app">
+			<section className = "todo-app container">
 				<div className = "row">
-					<div className="col-md-6">
+					<div className="col-md-12">
+						<div className="central-app wrapper-central">
+							<Clock />
+							<AddForm 
+							onSubmit = {this.onSubmit}/>
+						</div>
+					</div>
+					<div className="col-md-12">
 						<TodoList 
 						todoData = {todoData}
 						onDeleted = {this.onDeleted}
 						onToggleDone = {this.onToggleDone}/>
-						<AddForm 
-						onSubmit = {this.onSubmit}/>
-					</div>
-					<div className="col-md-6">
-						<Clock />
 					</div>
 				</div>
 			</section>

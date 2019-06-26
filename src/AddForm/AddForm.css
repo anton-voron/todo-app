@@ -1,4 +1,35 @@
+.item-add-form {
+	position: relative;
+}
+
+.item-add-form::after {
+	content: "";
+	position: absolute;
+	top: 40px;
+	left: 18%;
+
+	width: 80%;
+	height: 1px;
+	background-image: linear-gradient(to right top, #47074a, #64004a, #7f0046, #96003c, #a9002f, #b61827, #c22b1d, #cb3d0c, #d55607, #df6d05, #e78207, #ee9811);
+}
+
+.submit-button {
+	font-family: "Montserrat";
+    line-height: 30px;
+    font-size: 24px;
+	color: #fafafa;
+	width: 50%;
+	height: 50px;
+	background-color: transparent;
+	border: none;
+}
+
 .add-form {
 	background-color: transparent;
 	color: #fafafa;
+	border: none;
+	width: 400px;
+	outline:none
 }
+
+
