@@ -15,13 +15,11 @@ class TodoItem extends Component {
 		}
 		return (
 			<div className = {classNames}> 
-				<input type="checkbox" id="task" name="task" 
-					className = "my-checkbox mr-3" 
-					onClick = {onToggleDone}/>
-			    <label 
-			    htmlFor="task" 
-			    className="task-item">
-			    	{task}
+			    <label className="task-item">
+				    <input type="checkbox"  name="task" 
+						className = "my-checkbox mr-3"
+						onClick = {onToggleDone}/>
+				    	{task}
 			    </label>
 				<button type="button"
 					className="btn btn-outline-danger btn-sm float-right"

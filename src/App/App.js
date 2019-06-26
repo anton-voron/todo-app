@@ -1,16 +1,31 @@
 import React, { Component } from 'react';
 
 import TodoList from '../TodoList/TodoList.js';
+import AddForm from '../AddForm/AddForm.js';
 
 import './App.css';
 
 class App extends Component {
+	constructor () {
+		super()
+		this.state = {
+			todoData: [
+			this.createTask('Drink Coffee'),
+			this.createTask('Make Awesome App'),
+			this.createTask('Have a lunch'),
+			]
+		}
+	};
 
-	state = {
-    todoData: [
-    	{id: 1, task: "Todo cool App", done: false}
-    	]
-  	};
+  	taskId = 0;
+
+  	createTask = (str) => {
+  		return {
+  			id: this.taskId++,
+  			task: str,
+  			done: false,
+  		}
+  	}
 
   	onToggleDone = (id) => {
   		this.setState(({todoData}) => {
@@ -41,6 +56,17 @@ class App extends Component {
   		});
   	};
 
+  	onSubmit = (task) => {
+  		const newTask = this.createTask(task);
+  		this.setState(({todoData}) => {
+  			const before = todoData.slice();
+  			const newArray = [...before, newTask];
+  			return {
+  				todoData: newArray
+  			}
+  		});
+  	}
+
 	render() {
 		const { todoData } = this.state;
 		return (
@@ -49,6 +75,9 @@ class App extends Component {
 				todoData = {todoData}
 				onDeleted = {this.onDeleted}
 				onToggleDone = {this.onToggleDone}/>
+				<AddForm 
+				onSubmit = {this.onSubmit}/>
+
 			</section>
 		);
 	}

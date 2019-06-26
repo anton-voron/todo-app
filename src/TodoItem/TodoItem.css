@@ -1,9 +1,14 @@
 .task-list {
-
+  font-size: 1rem;
+  font-weight: normal;
+  color: #000000;
 }
 
 .task-item {
-	font-size: 20px;
+	margin-left: 1.25rem;
+    line-height: 25px;
+    cursor: pointer;
+    user-select: none;
 }
 
 .task-list.done .task-item{
