@@ -1,15 +1,32 @@
 import React, { Component } from 'react';
 
+import './TodoItem.css';
 
 
 class TodoItem extends Component {
 	
 	render() {
+		const { task, onDeleted, 
+				onToggleDone, done 
+				} = this.props;
+		let classNames = "todo-list-item";
+		if(done) {
+			classNames += " done"
+		}
 		return (
-			<div> 
-				<input type="checkbox" id="task" name="task" />
-			    <label for="task">{task}</label>
-				<button type="button">
+			<div className = {classNames}> 
+				<input type="checkbox" id="task" name="task" 
+					className = "my-checkbox mr-3" 
+					onClick = {onToggleDone}/>
+			    <label 
+			    htmlFor="task" 
+			    className="font-weight-normal">
+			    	{task}
+			    </label>
+				<button type="button"
+					className="btn btn-outline-danger btn-sm float-right"
+					onClick = {onDeleted}>
+					<i className="fa fa-trash-o" />
 				</button>
 			</div>
 		);
