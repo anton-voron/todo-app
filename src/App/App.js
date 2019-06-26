@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import TodoList from '../TodoList/TodoList.js';
 import AddForm from '../AddForm/AddForm.js';
+import Clock from '../Clock/Clock.js';
 
 import './App.css';
 
@@ -71,13 +72,19 @@ class App extends Component {
 		const { todoData } = this.state;
 		return (
 			<section className = "todo-app">
-				<TodoList 
-				todoData = {todoData}
-				onDeleted = {this.onDeleted}
-				onToggleDone = {this.onToggleDone}/>
-				<AddForm 
-				onSubmit = {this.onSubmit}/>
-
+				<div className = "row">
+					<div className="col-md-6">
+						<TodoList 
+						todoData = {todoData}
+						onDeleted = {this.onDeleted}
+						onToggleDone = {this.onToggleDone}/>
+						<AddForm 
+						onSubmit = {this.onSubmit}/>
+					</div>
+					<div className="col-md-6">
+						<Clock />
+					</div>
+				</div>
 			</section>
 		);
 	}
