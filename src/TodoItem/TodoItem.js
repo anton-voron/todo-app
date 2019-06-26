@@ -9,7 +9,7 @@ class TodoItem extends Component {
 		const { task, onDeleted, 
 				onToggleDone, done 
 				} = this.props;
-		let classNames = "todo-list-item";
+		let classNames = "task-list";
 		if(done) {
 			classNames += " done"
 		}
@@ -20,7 +20,7 @@ class TodoItem extends Component {
 					onClick = {onToggleDone}/>
 			    <label 
 			    htmlFor="task" 
-			    className="font-weight-normal">
+			    className="task-item">
 			    	{task}
 			    </label>
 				<button type="button"

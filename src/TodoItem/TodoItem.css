@@ -1,0 +1,11 @@
+.task-list {
+
+}
+
+.task-item {
+	font-size: 20px;
+}
+
+.task-list.done .task-item{
+	text-decoration: line-through;
+}
