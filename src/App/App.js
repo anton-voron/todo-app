@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import TodoList from '../TodoList/TodoList.js';
 import AddForm from '../AddForm/AddForm.js';
+import TodoList from '../TodoList/TodoList.js';
 import Clock from '../Clock/Clock.js';
+import Filter from '../Filter/Filter.js';
 
 import './App.css';
 
@@ -14,7 +15,8 @@ class App extends Component {
 			this.createTask('Drink Coffee'),
 			this.createTask('Make Awesome App'),
 			this.createTask('Have a lunch'),
-			]
+			],
+			filter: 'all'
 		}
 	};
 
@@ -68,8 +70,20 @@ class App extends Component {
   		});
   	}
 
+  	filter = (arr, filter) => {
+  		switch (filter) {
+  			case "all": return arr;
+  			case "active": return arr.filter(item => item.done === false);
+  			case "done": return arr.filter(item => item.done === true);
+  		}
+  	}
+  	onFilterChange = (filter) => {
+  		this.setState({filter});
+  	}
+
 	render() {
-		const { todoData } = this.state;
+		const { todoData, filter } = this.state;
+		const visibleItem = this.filter(todoData, filter);
 		return (
 			<section className = "todo-app container">
 				<div className = "row">
@@ -81,8 +95,13 @@ class App extends Component {
 						</div>
 					</div>
 					<div className="col-md-12">
+						<div className="user-panel">
+							<Filter
+							filter = {filter} 
+							onFilterChange = {this.onFilterChange}/>
+						</div>
 						<TodoList 
-						todoData = {todoData}
+						todoData = {visibleItem}
 						onDeleted = {this.onDeleted}
 						onToggleDone = {this.onToggleDone}/>
 					</div>
