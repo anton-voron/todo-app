@@ -5,6 +5,8 @@ import TodoList from '../TodoList/TodoList.js';
 import Clock from '../Clock/Clock.js';
 import Filter from '../Filter/Filter.js';
 import TaskCount from '../TaskCount/TaskCount.js';
+import UndefPage from '../UndefPage/UndefPage.js';
+
 
 import './TaskApp.css';
 
@@ -15,7 +17,7 @@ class TaskApp extends Component {
 			todoData: [
 			this.createTask('Drink Coffee'),
 			this.createTask('Make Awesome App'),
-			this.createTask('Have a lunch'),
+			this.createTask('Designe style for this Awesome App'),
 			],
 			filter: 'all',
 		}
@@ -83,39 +85,43 @@ class TaskApp extends Component {
   	}
 
 	render() {
-		const { userName } = this.props;
+		const { userName, isLoggedIn } = this.props;
 		const { todoData, filter } = this.state;
 		const visibleItem = this.filter(todoData, filter);
 		const doneCount = todoData.filter((item) => item.done).length;
 		const activeCount = todoData.length - doneCount;
-		return (
-			<section className = "todo-app container">
-				<div className = "row">
-					<div className="col-md-12">
-						<div className="central-app wrapper-central">
-							<TaskCount 
-							active={activeCount}
-							done ={doneCount}/>
-							<Clock 
-							userName = {userName}/>
-							<AddForm 
-							onSubmit = {this.onSubmit}/>
+		if (isLoggedIn) {
+			return (
+				<section className = "task-app">
+					<div className = "row">
+						<div className="col-md-12">
+							<div className="central-app wrapper-central">
+								<TaskCount 
+								active={activeCount}
+								done ={doneCount}/>
+								<Clock 
+								userName = {userName}/>
+								<AddForm 
+								onSubmit = {this.onSubmit}/>
+							</div>
+						</div>
+						<div className="col-md-12">
+							<div className="user-panel">
+								<Filter
+								filter = {filter} 
+								onFilterChange = {this.onFilterChange}/>
+							</div>
+							<TodoList 
+							todoData = {visibleItem}
+							onDeleted = {this.onDeleted}
+							onToggleDone = {this.onToggleDone}/>
 						</div>
 					</div>
-					<div className="col-md-12">
-						<div className="user-panel">
-							<Filter
-							filter = {filter} 
-							onFilterChange = {this.onFilterChange}/>
-						</div>
-						<TodoList 
-						todoData = {visibleItem}
-						onDeleted = {this.onDeleted}
-						onToggleDone = {this.onToggleDone}/>
-					</div>
-				</div>
-			</section>
-		);
+				</section>
+			);
+		} else {
+			return (<UndefPage />)
+		}
 	}
 }
 

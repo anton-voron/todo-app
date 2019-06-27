@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:200');
 
 
-
 #box {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 600px;
+  min-width: 400px;
   height: 200px;
   color: white;
   font-family: 'Raleway';
@@ -64,7 +64,7 @@
   background-color: transparent;
   color: #fafafa;
   border: none;
-  width: 400px;
+  max-width: 400px;
   outline:none;
   border-bottom: 2px solid #ffffff;
 }

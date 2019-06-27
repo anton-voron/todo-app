@@ -11,27 +11,30 @@ class Login extends Component {
 	onChange = (evt) => {
 		const value = evt.target.value;
 		this.setState({ userName: value });
-		console.log(value);
 	}
 
 	onLogin = (evt) => {
 		evt.preventDefault();
-		this.props.onLogin(this.state.userName);
-		this.props.history.push('/task-app');
+		if(this.state.userName.length > 0) {
+			this.props.onLogin(this.state.userName);
+			this.props.history.push('/task-app');
+		} else {
+			alert("At first you have to input name")
+		}
 	}
 
 	render () {
 		return (
 			<section className="login-position">
-				<form className = "login-form"
+				<form className = " row login-form"
 					onSubmit = {this.onLogin}>
-					<div className="gradient-border" id="box">
-						<label className="login">
+					<div className="gradient-border  wrapper-central p-5" id="box">
+						<label className="login" htmlFor = "login">
 						Enter your name:
-						    <input type="text" id="login" className="login-input m-3" name="userName"
-						    onChange = {this.onChange}
-						    value = {this.state.userName}/>
-					    </label>
+						</label>
+						<input type="text" id="login" className="login-input m-3" name="userName"
+						onChange = {this.onChange}
+						value = {this.state.userName}/>
 						
 					</div>
 				</form>

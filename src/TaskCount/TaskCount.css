@@ -2,16 +2,17 @@
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
+	background-color: #4c3c45;
 }
 
 .active {
 	margin: 10px;
 	font-size: 20px;
-	color: #000000;
+	color: #fafafa;
 }
 
 .done2 {
 	margin: 10px;
 	font-size: 20px;
-	color: #b9436a;
+	color: #fafafa;
 }

@@ -12,24 +12,26 @@ class App extends Component {
 	constructor () {
 		super()
 		this.state = {
-			userName: ''
+			userName: '',
+			isLoggedIn: false
 		}
 	};
 
   	onLogin = (name) => {
-  		return this.setState({userName: name})
+  		return this.setState({
+  			userName: name,
+  			isLoggedIn: !this.state.isLoggedIn})
   	}
 
 	render() {
-		const {userName } = this.state;
+		const {userName, isLoggedIn } = this.state;
 
 		return (
-			<section className = "todo-app container">
+			<section className = "todo-app">
 			<Router>
 				<Route path="/" exact={true} render={() => <Login onLogin={this.onLogin}/> } />
 				<Route path="/task-app" render={({match, location, history}) => {
-					console.log(match);
-					return <TaskApp userName={userName} /> 
+					return <TaskApp userName={userName} isLoggedIn = {isLoggedIn}/> 
 				}
 				}/>
 			</Router>
