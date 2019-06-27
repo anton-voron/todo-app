@@ -5,6 +5,8 @@ import Login from '../Login/Login.js';
 
 import './App.css';
 
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 
 class App extends Component {
 	constructor () {
@@ -23,8 +25,10 @@ class App extends Component {
 
 		return (
 			<section className = "todo-app container">
-					<Login onLogin = {this.onLogin}/>
-					<TaskApp userName = {userName}/>
+			<Router>
+				<Route path="/login" component = {Login} />
+				<Route path="/task-app" component = {TaskApp} />
+			</Router>
 			</section>
 		);
 	}
