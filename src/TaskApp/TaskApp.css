@@ -1,4 +1,9 @@
-
+.task-app {
+	position: fixed;
+	top: 10%;
+	left: 50%;
+	transform: translateX(-50%);
+}
 .central-app{
 	background-color: #ad9b9b;
 }
