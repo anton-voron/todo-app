@@ -92,7 +92,7 @@ class TaskApp extends Component {
 		const activeCount = todoData.length - doneCount;
 		if (isLoggedIn) {
 			return (
-				<section className = "task-app container">
+				<section className = "task-app container col-md-8">
 					<div className = "row">
 						<div className="col-md-12">
 							<div className="central-app wrapper-central">
