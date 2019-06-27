@@ -4,6 +4,7 @@ import AddForm from '../AddForm/AddForm.js';
 import TodoList from '../TodoList/TodoList.js';
 import Clock from '../Clock/Clock.js';
 import Filter from '../Filter/Filter.js';
+import TaskCount from '../TaskCount/TaskCount.js';
 
 import './App.css';
 
@@ -16,7 +17,8 @@ class App extends Component {
 			this.createTask('Make Awesome App'),
 			this.createTask('Have a lunch'),
 			],
-			filter: 'all'
+			filter: 'all',
+			user: ''
 		}
 	};
 
@@ -84,11 +86,16 @@ class App extends Component {
 	render() {
 		const { todoData, filter } = this.state;
 		const visibleItem = this.filter(todoData, filter);
+		const doneCount = todoData.filter((item) => item.done).length;
+		const activeCount = todoData.length - doneCount;
 		return (
 			<section className = "todo-app container">
 				<div className = "row">
 					<div className="col-md-12">
 						<div className="central-app wrapper-central">
+							<TaskCount 
+							active={activeCount}
+							done ={doneCount}/>
 							<Clock />
 							<AddForm 
 							onSubmit = {this.onSubmit}/>

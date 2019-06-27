@@ -13,10 +13,10 @@ class Filter extends Component {
     const {filter, onFilterChange} = this.props;
     const  buttons = this.buttons.map(({name, label}) => {
       const isActive = filter === name;
-      const clazz =  isActive ? 'btn-info' : 'btn-outline-secondary';
+      const clazz =  isActive ? 'btn-green' : 'btn-outline-secondary';
       return (
           <button type="button"
-                  className= {`btn ${clazz}`}
+                  className= {`btn btn-filt col-4 ${clazz}`}
                   key = {name}
                   onClick = {() => onFilterChange(name)}>
             {label}
@@ -24,7 +24,7 @@ class Filter extends Component {
         );
     });
     return (
-      <div className="btn-group">
+      <div className="row btn-position">
         {buttons}
       </div>
     );

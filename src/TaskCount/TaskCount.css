@@ -1,0 +1,17 @@
+.task-count {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.active {
+	margin: 10px;
+	font-size: 20px;
+	color: #000000;
+}
+
+.done2 {
+	margin: 10px;
+	font-size: 20px;
+	color: #b9436a;
+}
