@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import 'https://fonts.googleapis.com/css?family=Roboto+Mono:100';
-html,
-body {
-  font-family: 'Roboto Mono', monospace;
-  background: #212121;
+
+html, body {
   height: 100%;
   color: #fafafa;
+}
+body {
+	font-family: 'Roboto Mono', monospace;
+	background-color: #1D1F20;
 }
 
 h1, h2 {
