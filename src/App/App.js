@@ -26,8 +26,12 @@ class App extends Component {
 		return (
 			<section className = "todo-app container">
 			<Router>
-				<Route path="/login" component = {Login} />
-				<Route path="/task-app" component = {TaskApp} />
+				<Route path="/" exact={true} render={() => <Login onLogin={this.onLogin}/> } />
+				<Route path="/task-app" render={({match, location, history}) => {
+					console.log(match);
+					return <TaskApp userName={userName} /> 
+				}
+				}/>
 			</Router>
 			</section>
 		);

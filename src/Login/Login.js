@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import './Login.css';
 
 class Login extends Component {
-
 	state = {
 		userName: ''
 	}
@@ -16,7 +16,8 @@ class Login extends Component {
 
 	onLogin = (evt) => {
 		evt.preventDefault();
-		this.props.onLogin(this.state.userName)
+		this.props.onLogin(this.state.userName);
+		this.props.history.push('/task-app');
 	}
 
 	render () {
@@ -39,4 +40,4 @@ class Login extends Component {
 	}
 };
 
-export default Login;
+export default withRouter(Login);
