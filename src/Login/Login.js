@@ -25,10 +25,10 @@ class Login extends Component {
 
 	render () {
 		return (
-			<section className="login-position">
-				<form className = " row login-form"
+			<section className="login-position container">
+				<form className = "login-form"
 					onSubmit = {this.onLogin}>
-					<div className="gradient-border  wrapper-central p-5" id="box">
+					<div className="gradient-border  wrapper-central col-md-12" id="box">
 						<label className="login" htmlFor = "login">
 						Enter your name:
 						</label>

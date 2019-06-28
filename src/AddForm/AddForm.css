@@ -15,10 +15,9 @@
 
 .submit-button {
 	font-family: "Montserrat";
-    line-height: 30px;
-    font-size: 24px;
+    font-size: 1.4em;
 	color: #fafafa;
-	width: 50%;
+	width: 80%;
 	height: 50px;
 	background-color: transparent;
 	border: none;
@@ -28,7 +27,7 @@
 	background-color: transparent;
 	color: #fafafa;
 	border: none;
-	width: 400px;
+	width: 80%;
 	outline:none
 }
 
