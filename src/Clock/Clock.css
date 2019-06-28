@@ -17,6 +17,7 @@
     line-height: 30px;
     font-size: 1.8em;
     width: 100%;
+    text-align: center;
     overflow-wrap: break-word;  /* не поддерживает IE, Firefox; является копией word-wrap */ 
     word-wrap: break-word;
     word-break: keep-all;  /* не поддерживает Opera12.14, значение keep-all не поддерживается IE, Chrome */ 
