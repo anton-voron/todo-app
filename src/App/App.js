@@ -5,7 +5,7 @@ import Login from '../Login/Login.js';
 
 import './App.css';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 
 
 class App extends Component {
@@ -27,15 +27,13 @@ class App extends Component {
 		const {userName, isLoggedIn } = this.state;
 
 		return (
-			<section className = "todo-app">
-			<Router basename={process.env.PUBLIC_URL} >
+			<HashRouter basename='/' >
 				<Route path="/" exact={true} render={() => <Login onLogin={this.onLogin}/> } />
 				<Route path="/task-app" render={({match, location, history}) => {
 					return <TaskApp userName={userName} isLoggedIn = {isLoggedIn}/> 
 				}
 				}/>
-			</Router>
-			</section>
+			</HashRouter>
 		);
 	}
 }
