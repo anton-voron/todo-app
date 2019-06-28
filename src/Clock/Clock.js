@@ -35,11 +35,11 @@ class  Clock extends Component {
 			minutes =`${time.getMinutes().toLocaleString()}`
 		}
 		let period;
-		if(time.getHours().toLocaleString() > 3 && time.getHours().toLocaleString() < 10) {
+		if(time.getHours().toLocaleString() >= 3 && time.getHours().toLocaleString() < 10) {
 			period = "morning";
-		} else if (time.getHours().toLocaleString() > 10 && time.getHours().toLocaleString() < 19){
+		} else if (time.getHours().toLocaleString() >= 10 && time.getHours().toLocaleString() < 19){
 			period = "day";
-		} else if (time.getHours().toLocaleString() > 19 && time.getHours().toLocaleString() < 21){
+		} else if (time.getHours().toLocaleString() >= 19 && time.getHours().toLocaleString() < 21){
 			period = "evening";
 		} else {
 			period = "night";
