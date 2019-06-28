@@ -45,7 +45,7 @@ class  Clock extends Component {
 			period = "night";
 		}
 		return (
-			<section className = "clock m-3 d-flex wrapper-central">
+			<section className = "container clock m-3 wrapper-central">
 				<div className="clock-wrapper m-3">
 					<span className="clock-numb">{hours}:{minutes}</span>
 				</div>

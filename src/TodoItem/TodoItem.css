@@ -5,10 +5,17 @@
 }
 
 .task-item {
-	margin-left: 1.25rem;
+	width: 80%;
+	margin-left: 0.1em;
     line-height: 25px;
     cursor: pointer;
     user-select: none;
+    box-sizing: border-box;
+     overflow-wrap: break-word;  /* не поддерживает IE, Firefox; является копией word-wrap */ 
+  word-wrap: break-word;
+  word-break: keep-all;  /* не поддерживает Opera12.14, значение keep-all не поддерживается IE, Chrome */ 
+  line-break: loose;  /* нет поддержки для русского языка */ 
+ -webkit-hyphens: none; -ms-hyphens: none; hyphens: none;  /* значение auto не поддерживается Chrome */ 
 }
 
 .task-list.done .task-item{
