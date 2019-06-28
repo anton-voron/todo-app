@@ -26,10 +26,10 @@ export default class AddForm extends Component {
 		const { task } = this.state;
 		return (
 			<div className = "add-form">
-				<form className = "item-add-form"
+				<form className = "item-add-form d-flex"
 					onSubmit = {this.onSubmit}>
 					<button className = "submit-button">
-						Add task:
+						Add task
 					</button>
 					<input type = "text" className = "add-form"
 					value = {task}
