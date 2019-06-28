@@ -1,3 +1,7 @@
+.add-form {
+	margin-bottom: 10px;
+}
+
 .item-add-form {
 	position: relative;
 }
@@ -17,18 +21,23 @@
 	font-family: "Montserrat";
     font-size: 1.4em;
 	color: #fafafa;
-	width: 80%;
+	width: 90px;
 	height: 50px;
 	background-color: transparent;
 	border: none;
+	padding: 0;
+	margin-right: 5%;
+	margin-bottom: 10px;
 }
 
 .add-form {
+	height: 50px;
 	background-color: transparent;
 	color: #fafafa;
-	border: none;
+	border:none;
 	width: 80%;
-	outline:none
+	outline:none;
+	border-bottom: 1px solid linear-gradient(to right top, #47074a, #64004a, #7f0046, #96003c, #a9002f, #b61827, #c22b1d, #cb3d0c, #d55607, #df6d05, #e78207, #ee9811);;
 }
 
 
