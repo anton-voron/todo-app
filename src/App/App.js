@@ -28,7 +28,7 @@ class App extends Component {
 
 		return (
 			<section className = "todo-app">
-			<Router basename={process.env.PUBLIC_URL}>
+			<Router basename={process.env.PUBLIC_URL} >
 				<Route path="/" exact={true} render={() => <Login onLogin={this.onLogin}/> } />
 				<Route path="/task-app" render={({match, location, history}) => {
 					return <TaskApp userName={userName} isLoggedIn = {isLoggedIn}/> 
