@@ -85,7 +85,8 @@ class TaskApp extends Component {
   	}
 
 	render() {
-		const { userName, isLoggedIn } = this.props;
+		const { isLoggedIn } = this.props;
+		const getUserName = this.props.getUserName();
 		const { todoData, filter } = this.state;
 		const visibleItem = this.filter(todoData, filter);
 		const doneCount = todoData.filter((item) => item.done).length;
@@ -100,7 +101,7 @@ class TaskApp extends Component {
 								active={activeCount}
 								done ={doneCount}/>
 								<Clock 
-								userName = {userName}/>
+								getUserName = {getUserName}/>
 								<AddForm 
 								onSubmit = {this.onSubmit}/>
 							</div>
