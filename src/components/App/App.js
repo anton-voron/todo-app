@@ -4,7 +4,7 @@ import { RegistrationPage, LoginPage, TaskAppPage } from '../Pages/'
 import { LoginProvider } from '../Login-Service-Context/Login-Service-Context.js';
 import LoginAPI from '../../service/LoginAPI.js';
 
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter , Route } from 'react-router-dom';
 
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<BrowserRouter>
+			<HashRouter>
 				<LoginProvider value = {this.state.loginAPI}>
 					<Route path="/" exact={true} render={() => <LoginPage /> } />
 					<Route path="/registration" exact={true} render={() => <RegistrationPage /> } />
@@ -27,7 +27,7 @@ class App extends Component {
 					}
 					}/>
 				</LoginProvider>
-			</BrowserRouter>
+			</HashRouter>
 		);
 	}
 }
