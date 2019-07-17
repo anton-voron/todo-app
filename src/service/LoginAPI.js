@@ -104,8 +104,10 @@ export default class LoginAPI {
 	isLoggedIn = () => {
 		return this.state.access;
 	};
-	getUserName = () => {
+
+	getUserData = () => {
 		console.log(this.state.userName);
-		return this.state.userName;
+		return this.state;
 	};
+
 }

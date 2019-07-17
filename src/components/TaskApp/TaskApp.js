@@ -5,7 +5,6 @@ import TodoList from '../TodoList/TodoList.js';
 import Clock from '../Clock/Clock.js';
 import Filter from '../Filter/Filter.js';
 import TaskCount from '../TaskCount/TaskCount.js';
-import UndefPage from '../UndefPage/UndefPage.js';
 
 
 import './TaskApp.css';
@@ -85,44 +84,39 @@ class TaskApp extends Component {
   	}
 
 	render() {
-		const { isLoggedIn } = this.props;
-		const getUserName = this.props.getUserName();
+		const { isLoggedIn, getUserName } = this.props;
 		const { todoData, filter } = this.state;
 		const visibleItem = this.filter(todoData, filter);
 		const doneCount = todoData.filter((item) => item.done).length;
 		const activeCount = todoData.length - doneCount;
-		if (isLoggedIn) {
-			return (
-				<section className = "task-app container col-md-8">
-					<div className = "row">
-						<div className="col-md-12">
-							<div className="central-app wrapper-central">
-								<TaskCount 
-								active={activeCount}
-								done ={doneCount}/>
-								<Clock 
-								getUserName = {getUserName}/>
-								<AddForm 
-								onSubmit = {this.onSubmit}/>
-							</div>
-						</div>
-						<div className="col-md-12">
-							<div className="user-panel">
-								<Filter
-								filter = {filter} 
-								onFilterChange = {this.onFilterChange}/>
-							</div>
-							<TodoList 
-							todoData = {visibleItem}
-							onDeleted = {this.onDeleted}
-							onToggleDone = {this.onToggleDone}/>
+		return (
+			<section className = "task-app container col-md-8">
+				<div className = "row">
+					<div className="col-md-12">
+						<div className="central-app wrapper-central">
+							<TaskCount 
+							active={activeCount}
+							done ={doneCount}/>
+							<Clock 
+							getUserName = {getUserName}/>
+							<AddForm 
+							onSubmit = {this.onSubmit}/>
 						</div>
 					</div>
-				</section>
-			);
-		} else {
-			return (<UndefPage />)
-		}
+					<div className="col-md-12">
+						<div className="user-panel">
+							<Filter
+							filter = {filter} 
+							onFilterChange = {this.onFilterChange}/>
+						</div>
+						<TodoList 
+						todoData = {visibleItem}
+						onDeleted = {this.onDeleted}
+						onToggleDone = {this.onToggleDone}/>
+					</div>
+				</div>
+			</section>
+		);
 	}
 }
 

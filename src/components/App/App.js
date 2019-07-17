@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import TaskApp from '../TaskApp/TaskApp.js';
 import {LoginPage, TaskAppPage} from '../todo-components/';
 import { LoginProvider } from '../Login-Service-Context/Login-Service-Context.js';
 import LoginAPI from '../../service/LoginAPI.js';

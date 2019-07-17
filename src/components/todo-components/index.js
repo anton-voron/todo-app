@@ -2,7 +2,7 @@ import React from 'react';
 
 import Login from '../Login/Login.js';
 import TaskApp from '../TaskApp/TaskApp';
-import withLoginAPI from '../HocHelper/withLoginAPI.js';
+import {withLoginAPI, HocLoggedIn} from '../HocHelper/';
 
 
 const mapMethodsToLogin = (loginAPI) => {
@@ -14,13 +14,12 @@ const mapMethodsToLogin = (loginAPI) => {
 
 const mapMethodsToTaskApp = (loginAPI) => {
 	return {
-		isLoggedIn: loginAPI.isLoggedIn,
-		getUserName: loginAPI.getUserName
+		getUserData: loginAPI.getUserData
 	}
 }
 
 const LoginPage = withLoginAPI(mapMethodsToLogin)(Login);
-const TaskAppPage = withLoginAPI(mapMethodsToTaskApp)(TaskApp)
+const TaskAppPage = withLoginAPI(mapMethodsToTaskApp)(HocLoggedIn(TaskApp))
 
 
 export {LoginPage, TaskAppPage}
