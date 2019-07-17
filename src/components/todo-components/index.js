@@ -1,9 +1,16 @@
 import React from 'react';
 
+import Registration from '../Registration/Registration.js';
 import Login from '../Login/Login.js';
 import TaskApp from '../TaskApp/TaskApp';
 import {withLoginAPI, HocLoggedIn} from '../HocHelper/';
 
+
+const mapMethodsToRegistration = (loginAPI) => {
+	return {
+		registerUser: loginAPI.registerUser
+	}
+}
 
 const mapMethodsToLogin = (loginAPI) => {
 	return {
@@ -18,8 +25,10 @@ const mapMethodsToTaskApp = (loginAPI) => {
 	}
 }
 
+
+const Registrationpage = withLoginAPI(mapMethodsToRegistration)(Registration);
 const LoginPage = withLoginAPI(mapMethodsToLogin)(Login);
 const TaskAppPage = withLoginAPI(mapMethodsToTaskApp)(HocLoggedIn(TaskApp))
 
 
-export {LoginPage, TaskAppPage}
+export {Registrationpage, LoginPage, TaskAppPage}

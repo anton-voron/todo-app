@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { Component} from 'react';
+import { Link } from 'react-router-dom';
 
-import './Login.css';
+class Registration extends Component {
 
-class Login extends Component {
 	state = {
 		userLogin: '',
+		userEmail: '',
 		userPassword: ''
+
 	}
 
 	onChange = (evt) => {
@@ -15,14 +16,11 @@ class Login extends Component {
 		this.setState({[name]:value});
 	}
 
-	onLogin = (evt) => {
+	onRegister = (evt) => {
 		evt.preventDefault();
-		const {userLogin, userPassword} = this.state;
-		if(userLogin.length > 0 && userPassword.length > 0) {
-			this.props.onLogin(userLogin, userPassword);
-			if(this.props.isLoggedIn()) {
-				this.props.history.push('/task-app')
-			};
+		const {userLogin, userEmail, userPassword} = this.state;
+		if(userLogin.length > 0 && userEmail.length > 0 && userPassword.length > 0) {
+			this.props.registerUser(userLogin, userEmail, userPassword);
 		} else {
 			alert("At first you have to input name")
 		}
@@ -30,9 +28,9 @@ class Login extends Component {
 
 	render () {
 		return (
-			<section className="container">
+			<section>
 				<form
-					onSubmit = {this.onLogin}>
+				onSubmit={this.onRegister}>
 					<div className="gradient-border  wrapper-central col-md-12" id="box">
 						<label htmlFor = "login">
 							Login:
@@ -40,20 +38,33 @@ class Login extends Component {
 						<input type="text" id="login" className="form-input m-3" name="userLogin"
 							onChange = {this.onChange}
 							value = {this.state.userLogin}/>
+
+
+						<label htmlFor = "email">
+							Email:
+						</label>
+						<input type="text" id="email" className="form-input m-3" name="userEmail"
+							onChange = {this.onChange}
+							value = {this.state.userEmail}/>
+
+
 						<label htmlFor = "password">
 							Password:
 						</label>
 						<input type="password" id="password" className="form-input m-3" name="userPassword"
 							onChange = {this.onChange}
 							value = {this.state.userPassword}/>
+
 						<button type= "submit" className="btn btn-primary"
-							onSubmit = {this.onLogin}> 
-						Submit </button>
-					</div>
+							onSubmit = {this.onRegister}> 
+								Registrate
+						 </button>
+						 <Link to = "" className="btn btn-primary"> to Login </Link>
+						</div>
 				</form>
 			</section>
 		);
 	}
-};
+}
 
-export default withRouter(Login);
+export default Registration;

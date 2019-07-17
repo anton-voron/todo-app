@@ -1,25 +1,31 @@
 export default class LoginAPI {
 	constructor () {
 		this.state = {
-			userName: null,
+			access: false,
+			userLogin: null,
 			userPassword: null,
-			access: false
+			userEmail: null,
+			userId: null,
 		}
 	}
+
+	_userId = 0;
+
 	_userData = [
 		{
-			login: "userTest",
-			email: "emailtest@gmail.com",
-			password: "123123"
+			userLogin: "userTest",
+			userPassword: "emailtest@gmail.com",
+			userEmail: "123123",
+			userId: this._userId ++
 		},
 		{
-			login: "Antik",
-			email: "example@gmail.com",
-			password: "321321"
+			userLogin: "Antik",
+			userPassword: "example@gmail.com",
+			userEmail: "321321",
+			userId: this._userId ++
 		}
 	];
 
-	_userId = 0;
 	loginValidator = (input) => {
 		const loginRegex = /[A-Za-z]{5,}/;
 		if(loginRegex.test(input)) {
@@ -51,30 +57,31 @@ export default class LoginAPI {
 			console.log('Invalid email');
 			return 'Invalid email'
 		}
-	};
-	createUser = (newLogin, newEmail, newPassword) => {
+	}
+
+	registerUser = (newLogin, newEmail, newPassword) => {
 		const userData = this._userData.find((user) => {
-			if (user.login === newLogin || user.email === newEmail) {
+			if (user.userLogin === newLogin || user.userEmail === newEmail) {
 				return user
 			}	
 		});
 
 		if(userData === undefined) {
 			const newUser = {
-				login: newLogin,
-				email: newEmail,
-				password: newPassword,
+				userLogin: newLogin,
+				userPassword: newPassword,
+				userEmail: newEmail,
 				userId: this._userId ++
 			}
-			console.log("You registered successfully")
+			console.log("You registered successfully", this._userData)
 			this._userData.push(newUser);
 			return true;
 		} 
-		 if(userData.email === newEmail) {
+		 if(userData.userEmail === newEmail) {
 			console.log("This email has already been registered")
 			return false;
 		} 
-		 if(userData.login === newLogin) {
+		 if(userData.userLogin === newLogin) {
 			console.log("This login is taken by other user");
 			return false;
 		}
@@ -83,21 +90,21 @@ export default class LoginAPI {
 
 	onLogin = (inputLogin, inputPassword) => {
 		const userData = this._userData.find((user) => {
-			if (user.login === inputLogin && user.password === inputPassword) {
+			if (user.userLogin === inputLogin && user.userPassword === inputPassword) {
 				return user
 			}
 		})
 
 		if (userData) {
-			console.log('ok')
 			this.state = {
-				userName: inputLogin,
-				userPassword: inputPassword,
-				access: true
+				access: true,
+				...userData,
 			}
+			console.log(this.state)
 		} else { 
 			console.log("Invalid Data")
-			return false }	
+			return false 
+		}	
 	};
 
 
@@ -106,7 +113,7 @@ export default class LoginAPI {
 	};
 
 	getUserData = () => {
-		console.log(this.state.userName);
+		console.log(this.state.userLogin);
 		return this.state;
 	};
 

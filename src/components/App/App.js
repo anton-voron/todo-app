@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-import {LoginPage, TaskAppPage} from '../todo-components/';
+import {Registrationpage, LoginPage, TaskAppPage} from '../todo-components/';
 import { LoginProvider } from '../Login-Service-Context/Login-Service-Context.js';
 import LoginAPI from '../../service/LoginAPI.js';
 
 import './App.css';
 
-import { HashRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 
 class App extends Component {
@@ -20,15 +20,16 @@ class App extends Component {
 
 	render() {
 		return (
-			<HashRouter basename='/' >
+			<BrowserRouter>
 				<LoginProvider value = {this.state.loginAPI}>
+					<Route path="/reg" exact={true} render={() => <Registrationpage /> } />
 					<Route path="/" exact={true} render={() => <LoginPage /> } />
 					<Route path="/task-app" render={({match, location, history}) => {
 						return <TaskAppPage /> 
 					}
 					}/>
 				</LoginProvider>
-			</HashRouter>
+			</BrowserRouter>
 		);
 	}
 }
