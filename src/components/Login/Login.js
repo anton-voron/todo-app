@@ -32,22 +32,22 @@ class Login extends Component {
 		return (
 			<section className="login-position container">
 				<form className = "login-form"
-				onSubmit = {this.onLogin}>
+					onSubmit = {this.onLogin}>
 					<div className="gradient-border  wrapper-central col-md-12" id="box">
 						<label className="login" htmlFor = "login">
-						Login:
+							Login:
 						</label>
 						<input type="text" id="login" className="login-input m-3" name="userName"
-						onChange = {this.onChange}
-						value = {this.state.userName}/>
+							onChange = {this.onChange}
+							value = {this.state.userName}/>
 						<label className="login" htmlFor = "password">
-						Password:
+							Password:
 						</label>
 						<input type="password" id="password" className="login-input m-3" name="userPassword"
-						onChange = {this.onChange}
-						value = {this.state.userPassword}/>
+							onChange = {this.onChange}
+							value = {this.state.userPassword}/>
 						<button type= "submit" className="btn btn-primary"
-						onSubmit = {this.onLogin}> 
+							onSubmit = {this.onLogin}> 
 						Submit </button>
 					</div>
 				</form>
