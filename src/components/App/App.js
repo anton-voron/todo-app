@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 
-import {Registrationpage, LoginPage, TaskAppPage} from '../todo-components/';
+import { RegistrationPage, LoginPage, TaskAppPage } from '../Pages/'
 import { LoginProvider } from '../Login-Service-Context/Login-Service-Context.js';
 import LoginAPI from '../../service/LoginAPI.js';
-
-import './App.css';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -22,8 +20,8 @@ class App extends Component {
 		return (
 			<BrowserRouter>
 				<LoginProvider value = {this.state.loginAPI}>
-					<Route path="/reg" exact={true} render={() => <Registrationpage /> } />
 					<Route path="/" exact={true} render={() => <LoginPage /> } />
+					<Route path="/registration" exact={true} render={() => <RegistrationPage /> } />
 					<Route path="/task-app" render={({match, location, history}) => {
 						return <TaskAppPage /> 
 					}

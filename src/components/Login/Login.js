@@ -6,14 +6,29 @@ import './Login.css';
 class Login extends Component {
 	state = {
 		userLogin: '',
-		userPassword: ''
+		userPassword: '',
+		error: null
 	}
 
 	onChange = (evt) => {
 		const name = evt.target.name;
 		const value = evt.target.value;
-		this.setState({[name]:value});
+		this.setState({[name]:value},
+									() => {this.onBlur(name, value)});
 	}
+
+	onBlur = (name, value) => {
+		if (name == "userLogin") {
+			const validator = this.props.loginValidator(value);
+			this.setState({error: validator})
+		} else if (name == "userPassword") {
+			const validator = this.props.passwordValidator(value)
+			this.setState({error: validator})
+		} else if (name == "userEmail") {
+			const validator = this.props.emailValidator(value)
+			this.setState({error: validator})
+		}
+	};
 
 	onLogin = (evt) => {
 		evt.preventDefault();
@@ -29,8 +44,9 @@ class Login extends Component {
 	}
 
 	render () {
+		const {userLogin, userPassword, error} = this.state; 
 		return (
-			<section className="container">
+			<section>
 				<form
 					onSubmit = {this.onLogin}>
 					<div className="gradient-border  wrapper-central col-md-12" id="box">
@@ -39,18 +55,21 @@ class Login extends Component {
 						</label>
 						<input type="text" id="login" className="form-input m-3" name="userLogin"
 							onChange = {this.onChange}
-							value = {this.state.userLogin}/>
+							value = {userLogin}
+							onBlur = {this.onBlur}/>
 						<label htmlFor = "password">
 							Password:
 						</label>
 						<input type="password" id="password" className="form-input m-3" name="userPassword"
 							onChange = {this.onChange}
-							value = {this.state.userPassword}/>
+							value = {userPassword}
+							onBlur = {this.onBlur}/>
 						<button type= "submit" className="btn btn-primary"
 							onSubmit = {this.onLogin}> 
 						Submit </button>
 					</div>
 				</form>
+				{error && <div className="errorActive">{error}</div>}
 			</section>
 		);
 	}

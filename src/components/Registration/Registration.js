@@ -1,20 +1,34 @@
 import React, { Component} from 'react';
-import { Link } from 'react-router-dom';
 
 class Registration extends Component {
 
 	state = {
 		userLogin: '',
 		userEmail: '',
-		userPassword: ''
+		userPassword: '',
+		error: null
 
 	}
 
 	onChange = (evt) => {
 		const name = evt.target.name;
 		const value = evt.target.value;
-		this.setState({[name]:value});
+		this.setState({[name]:value},
+									() => {this.onBlur(name, value)});
 	}
+
+	onBlur = (name, value) => {
+		if (name == "userLogin") {
+			const validator = this.props.loginValidator(value);
+			this.setState({error: validator})
+		} else if (name == "userPassword") {
+			const validator = this.props.passwordValidator(value)
+			this.setState({error: validator})
+		} else if (name == "userEmail") {
+			const validator = this.props.emailValidator(value)
+			this.setState({error: validator})
+		}
+	};
 
 	onRegister = (evt) => {
 		evt.preventDefault();
@@ -27,6 +41,7 @@ class Registration extends Component {
 	}
 
 	render () {
+		const {userLogin, userPassword, userEmail, error} = this.state; 
 		return (
 			<section>
 				<form
@@ -37,7 +52,8 @@ class Registration extends Component {
 						</label>
 						<input type="text" id="login" className="form-input m-3" name="userLogin"
 							onChange = {this.onChange}
-							value = {this.state.userLogin}/>
+							value = {userLogin}
+							onBlur = {this.onBlur}/>
 
 
 						<label htmlFor = "email">
@@ -45,7 +61,8 @@ class Registration extends Component {
 						</label>
 						<input type="text" id="email" className="form-input m-3" name="userEmail"
 							onChange = {this.onChange}
-							value = {this.state.userEmail}/>
+							value = {userEmail}
+							onBlur = {this.onBlur}/>
 
 
 						<label htmlFor = "password">
@@ -53,15 +70,16 @@ class Registration extends Component {
 						</label>
 						<input type="password" id="password" className="form-input m-3" name="userPassword"
 							onChange = {this.onChange}
-							value = {this.state.userPassword}/>
+							value = {userPassword}
+							onBlur = {this.onBlur}/>
 
 						<button type= "submit" className="btn btn-primary"
 							onSubmit = {this.onRegister}> 
 								Registrate
 						 </button>
-						 <Link to = "" className="btn btn-primary"> to Login </Link>
 						</div>
 				</form>
+				{error && <div className="errorActive">{error}</div>}
 			</section>
 		);
 	}

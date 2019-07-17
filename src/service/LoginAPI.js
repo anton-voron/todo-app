@@ -3,8 +3,8 @@ export default class LoginAPI {
 		this.state = {
 			access: false,
 			userLogin: null,
-			userPassword: null,
 			userEmail: null,
+			userPassword: null,
 			userId: null,
 		}
 	}
@@ -13,26 +13,25 @@ export default class LoginAPI {
 
 	_userData = [
 		{
-			userLogin: "userTest",
-			userPassword: "emailtest@gmail.com",
-			userEmail: "123123",
+			userLogin: "test",
+			userEmail: "test@gmail.com",
+			userPassword: "tesT123$",
 			userId: this._userId ++
 		},
 		{
-			userLogin: "Antik",
-			userPassword: "example@gmail.com",
-			userEmail: "321321",
+			userLogin: "User",
+			userEmail: "user@gmail.com",
+			userPassword: "userPass1!",
 			userId: this._userId ++
 		}
 	];
 
 	loginValidator = (input) => {
-		const loginRegex = /[A-Za-z]{5,}/;
+		const loginRegex = /[A-Za-z]{4,}/;
 		if(loginRegex.test(input)) {
 			console.log('Sutiable');
 			return true
 		} else {
-			console.log('To short, numbers and special characters are not allowed');
 			return 'To short, numbers and special characters are not allowed'
 		}
 	};
@@ -43,7 +42,6 @@ export default class LoginAPI {
 			console.log('Sutiable');
 			return true
 		} else {
-			console.log('At least 6 characters: one number, one special character, Latin lowercase and uppercase letter.');
 			return 'At least 6 characters: one number, one special character, Latin lowercase and uppercase letter.'
 		}
 	};
@@ -54,7 +52,6 @@ export default class LoginAPI {
 			console.log('Sutiable');
 			return true
 		} else {
-			console.log('Invalid email');
 			return 'Invalid email'
 		}
 	}
@@ -65,24 +62,33 @@ export default class LoginAPI {
 				return user
 			}	
 		});
-
 		if(userData === undefined) {
-			const newUser = {
-				userLogin: newLogin,
-				userPassword: newPassword,
-				userEmail: newEmail,
-				userId: this._userId ++
-			}
-			console.log("You registered successfully", this._userData)
-			this._userData.push(newUser);
-			return true;
+			const logValid = this.loginValidator(newLogin);
+			const emailValid= this.emailValidator(newEmail);
+			const passValid = this.passwordValidator(newPassword)
+			console.log(logValid, emailValid, passValid);
+
+			if( logValid === true && emailValid === true && passValid === true) {
+				const newUser = {
+					userLogin: newLogin,
+					userEmail: newEmail,
+					userPassword: newPassword,
+					userId: this._userId ++
+					}
+				alert("You have registered successfully");
+				this._userData.push(newUser);
+				return true;
+			} else {
+				alert('You inputted not suitable values');
+				return false;
+			}	
 		} 
 		 if(userData.userEmail === newEmail) {
-			console.log("This email has already been registered")
+			alert("This email has already been registered")
 			return false;
 		} 
 		 if(userData.userLogin === newLogin) {
-			console.log("This login is taken by other user");
+			alert("This login is taken by other user");
 			return false;
 		}
 	};
@@ -102,7 +108,7 @@ export default class LoginAPI {
 			}
 			console.log(this.state)
 		} else { 
-			console.log("Invalid Data")
+			alert("Invalid Data")
 			return false 
 		}	
 	};

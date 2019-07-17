@@ -20,7 +20,7 @@ class  Clock extends Component {
     }
 
 	render () {
-		const {getUserName} = this.props;
+		const {userLogin} = this.props;
 		const {time} = this.state;
 		let hours;
 		if(time.getHours().toLocaleString() < 10) {
@@ -49,7 +49,7 @@ class  Clock extends Component {
 				<div className="clock-wrapper m-3">
 					<span className="clock-numb">{hours}:{minutes}</span>
 				</div>
-				<span className="add-text"> Good { period }, {getUserName}! </span>
+				<span className="add-text"> Good { period }, {userLogin}! </span>
 			</section>
 		);
 	}

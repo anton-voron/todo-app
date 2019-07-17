@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import UndefPage from '../UndefPage/UndefPage.js';
+import {UndefPage} from '../Pages/';
 
 const HocLoggedIn = (View) => {
 	return class extends Component {
 
 		state = {
-			isLoggedIn: false,
-			userName: '',
+			access: false,
+			userLogin: '',
 		}
 
 		componentDidMount() {
@@ -14,11 +14,10 @@ const HocLoggedIn = (View) => {
 		}
 		
 		update = () => {
-			const {userName, access} = this.props.getUserData();
-			if (access) {
+			const res = this.props.getUserData();
+			if (res) {
 				this.setState({
-					isLoggedIn: access,
-					userName
+					...res
 				})
 			}
 			
@@ -34,12 +33,12 @@ const HocLoggedIn = (View) => {
 
 
 		render () {
-			const {isLoggedIn, userName} = this.state;
-			if(!isLoggedIn) {
+			const {access, userLogin} = this.state;
+			if(!access) {
 				return <UndefPage />
 			}
 
-			return <View {...this.props} isLoggedIn = {isLoggedIn} getUserName={userName} />;
+			return <View {...this.props}  userLogin={userLogin} />;
 		};
 	};
 };
